@@ -1,0 +1,2 @@
+{"input":"Hello","output":"Hello, how can I help you?","type":"benign","goal":null,"strategies":null}
+{"input":"Hi","output":"Hello, how can I help you?","type":"benign","goal":null,"strategies":null}
