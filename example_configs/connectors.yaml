@@ -1,0 +1,32 @@
+connectors:
+  huggingface:
+    type: ares.connectors.huggingface.HuggingFaceConnector
+    name: huggingface
+    model_config:
+      pretrained_model_name_or_path: 'Qwen/Qwen2-0.5B-Instruct'
+      torch_dtype: 'bfloat16'
+    tokenizer_config:
+      pretrained_model_name_or_path: 'Qwen/Qwen2-0.5B-Instruct'
+      padding_side: 'left'
+    generate_kwargs:
+      chat_template:
+        return_tensors: 'pt'
+        thinking: true,
+        return_dict: true,
+        add_generation_prompt: true,
+      generate_params:
+        max_new_tokens: 50
+    seed: 42
+    device: auto
+  litellm_connector_ollama:
+    type: ares_litellm.LiteLLMConnector
+    name: "gpt-oss-20-on-ollama"
+    endpoint-type: "ollama"
+    model: "ollama/gpt-oss:20b"
+  litellm_connector:
+    name: "gpt-oss-120b-on-watsonx"
+    endpoint-type: "watsonx"
+    endpoint: ""
+    model: "openai/gpt-oss-120b"
+    reasoning_effort: "low"
+    prompt_path: 'assets/gptoss_prompt.yaml'
